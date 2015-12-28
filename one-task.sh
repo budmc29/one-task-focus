@@ -1,9 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
-output=$(zenity --list \
-  --title="Current Task:" \
-  --column="Name" --column="Status" \
-  992383 Normal "Task 1" \
-  293832 High "Task w")
+# TODO:
+# show last notification on load
+# on button click show form to add a new task
+# modify all todos in the list
+# mark todo as finished
 
-echo $output
+while read p; do
+  echo $p
+done <one-task-list.txt
+
+# zenity  --list  --text "" --checklist  --column "Status" --column "Task" \
+# TRUE "More pictures" \
+# TRUE "More complete post" \
+# FALSE "Includes Installation guidelines" \
+# FALSE "Create a forum for question queries" --separator=":"
