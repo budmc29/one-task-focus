@@ -4,14 +4,23 @@
 # show last notification on load
 # on button click show form to add a new task
 # modify all todos in the list
-# mark todo as finished
+# mark todo item as finished
 
+#find a better counter?
+COUNTER=0
 while read p; do
-  echo $p
+  ARRAY[$COUNTER]=$p
+  let COUNTER=COUNTER+1
 done <one-task-list.txt
 
-# zenity  --list  --text "" --checklist  --column "Status" --column "Task" \
-# TRUE "More pictures" \
-# TRUE "More complete post" \
-# FALSE "Includes Installation guidelines" \
-# FALSE "Create a forum for question queries" --separator=":"
+# only display the last three tasks
+TASK=$(zenity  --list  --text "" --checklist  --column "Status" --column "Task" \
+FALSE "${ARRAY[0]}" \
+FALSE "${ARRAY[1]}" \
+FALSE "${ARRAY[2]}" )
+
+# if a task is checked
+if [ "$TASK" != "" ]
+  then
+    echo "task name is $TASK"
+fi
