@@ -22,5 +22,5 @@ FALSE "${ARRAY[2]}" )
 # if a task is checked
 if [ "$TASK" != "" ]
   then
-    echo "task name is $TASK"
+    sed "/$TASK/g" one-task-list.txt > completed-tasks.txt
 fi
